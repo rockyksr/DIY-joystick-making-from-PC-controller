@@ -1,0 +1,32 @@
+// 2 servo control by joystick
+// by rockyksr  
+
+#include <Servo.h>
+  
+Servo servo1;
+Servo servo2;
+int joyX1 = 0;
+int joyY1 = 1;
+int joyX2 = 2;
+int joyY2 = 3;
+  
+int servoVal;
+  
+void setup() 
+{
+  servo1.attach(9);
+  servo2.attach(10);
+}
+  
+void loop()
+{
+  
+  servoVal = analogRead(joyX1);
+  servoVal = map(servoVal, 0, 1023, 0, 180);
+  servo1.write(servoVal);
+
+  servoVal = analogRead(joyY2);
+  servoVal = map(servoVal, 0, 1023, 0, 180);
+  servo2.write(servoVal);
+  delay(15);  
+}

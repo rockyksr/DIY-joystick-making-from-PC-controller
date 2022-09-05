@@ -1,0 +1,54 @@
+// joystick controls
+// rockyksr
+
+int X1pin=A0;
+int Y1pin=A1;
+int S1pin=2;
+int X1val=0;
+int Y1val=1;
+int S1val;
+int X2pin=A2;
+int Y2pin=A3;
+int S2pin=3;
+int X2val=0;
+int Y2val=1;
+int S2val;
+int dt=200;
+void setup() {
+  // put your setup code here, to run once:
+Serial.begin(9600);
+pinMode(X1pin, INPUT);
+pinMode(Y1pin, INPUT);
+pinMode(S1pin, INPUT);
+pinMode(X2pin, INPUT);
+pinMode(Y2pin, INPUT);
+pinMode(S2pin, INPUT);
+digitalWrite(S1pin, HIGH);
+digitalWrite(S2pin, HIGH);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+X1val=analogRead(X1pin);
+Y1val=analogRead(Y1pin);
+S1val=digitalRead(S1pin);
+delay(dt);
+X2val=analogRead(X2pin);
+Y2val=analogRead(Y2pin);
+S2val=digitalRead(S2pin);
+delay(dt);
+Serial.print(" X1 Value = ");
+Serial.print(X1val);
+Serial.print(" Y1 Value = ");
+Serial.print(Y1val);
+Serial.print(" Switch1 State is ");
+Serial.println(S1val);
+Serial.print(" X2 Value = ");
+Serial.print(X2val);
+Serial.print(" Y2 Value = ");
+Serial.print(Y2val);
+Serial.print(" Switch2 State is ");
+Serial.println(S2val); 
+
+
+}
